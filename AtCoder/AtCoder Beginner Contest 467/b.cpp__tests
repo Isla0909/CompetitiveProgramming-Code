@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"5"
+		],
+		"test": "3\n1 2 keep\n3 6 take\n5 9 keep\n"
+	},
+	{
+		"correct_answers":
+		[
+			"175"
+		],
+		"test": "8\n36 49 take\n38 73 keep\n27 85 take\n65 71 take\n52 86 keep\n48 60 keep\n37 98 keep\n5 38 keep\n"
+	}
+]

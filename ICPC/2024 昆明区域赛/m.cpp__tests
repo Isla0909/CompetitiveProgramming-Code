@@ -1,0 +1,12 @@
+[
+	{
+		"correct_answers":
+		[
+			"yEs\n1\nYES\n1 3 2\n6 5 4"
+		],
+		"test": "2\n1 1\n2 3\n"
+	},
+	{
+		"test": "1\n2 2\n"
+	}
+]

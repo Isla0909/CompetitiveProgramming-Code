@@ -1,0 +1,52 @@
+[
+	{
+		"correct_answers":
+		[
+			"-1\n3\n-1\n1"
+		],
+		"test": "4\n*****\n<<<>\n>*<\n*\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "1\n<>\n"
+	},
+	{
+		"correct_answers":
+		[
+			"-1"
+		],
+		"test": "1\n><\n"
+	},
+	{
+		"correct_answers":
+		[
+			"-1"
+		],
+		"test": "1\n<<<>>><\n"
+	},
+	{
+		"correct_answers":
+		[
+			"5"
+		],
+		"test": "1\n<<<<*>>>>\n"
+	},
+	{
+		"test": "1\n<<>>*>*>*>*\n"
+	},
+	{
+		"test": "1\n<*>>>>\n"
+	},
+	{
+		"test": "1\n*<\n"
+	},
+	{
+		"test": "1\n>*<\n"
+	},
+	{
+		"test": "1\n>*\n"
+	}
+]

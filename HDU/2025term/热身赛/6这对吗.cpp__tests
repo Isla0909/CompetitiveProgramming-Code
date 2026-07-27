@@ -1,0 +1,66 @@
+[
+	{
+		"correct_answers":
+		[
+			"1 0\nDUI DE\n8 3\nO BUDUI BUDUI\n1 1\nDUI DUI DUIMA"
+		],
+		"test": "3\nYES\nYYEESSNOOO\nABULAIKESIYESNO\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0 7\nO DUI DE"
+		],
+		"test": "1\nNOOOOOOOES\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0 1\nO DUI DE"
+		],
+		"test": "1\nYYASNO\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0 0\nDUI DUI DUIMA"
+		],
+		"test": "1\nACSDSADA\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0 0\nDUI DUI DUIMA"
+		],
+		"test": "1\nAES\n"
+	},
+	{
+		"correct_answers":
+		[
+			"20 1\nO BUDUI BUDUI"
+		],
+		"test": "1\nYYYYYESSSSNO\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1 7\nO DUI DE"
+		],
+		"test": "1\nYESNNNNNNNO\n"
+	},
+	{
+		"correct_answers":
+		[
+			"12 20\nO DUI DE",
+			"12 20\nBUDUI BUDUI"
+		],
+		"test": "1\nAYEEESSSSNNNNNOOOO\n"
+	},
+	{
+		"correct_answers":
+		[
+			"24 20\nO BUDUI BUDUI"
+		],
+		"test": "1\nYYEEESSSSNNNNNOOOO\n"
+	}
+]

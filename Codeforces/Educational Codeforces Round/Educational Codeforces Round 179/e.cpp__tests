@@ -1,0 +1,23 @@
+[
+	{
+		"correct_answers":
+		[
+			"ab\naaaaabbbbb\naaaaaaaaaaaaaaabbbabcbabbbbabc"
+		],
+		"test": "3\n2 2\ncb\nc b\nb a\n10 10\nbbbbbbbbbb\nb a\nb c\nc b\nb a\nc a\nb c\nb c\nb a\na b\nc a\n30 20\nabcaababcbbcabcbbcabcbabbbbabc\nb c\nb c\nc a\nb c\nb c\nb a\nb c\nb c\nb a\nb a\nb a\nb a\nc a\nb c\nc a\nb c\nc a\nc a\nb c\nc b\n"
+	},
+	{
+		"correct_answers":
+		[
+			"c"
+		],
+		"test": "1\n1 4\nc\nb b\nb a\na c\nc c"
+	},
+	{
+		"correct_answers":
+		[
+			"b"
+		],
+		"test": "1\n1 3\nc\na b\nb a\nc b"
+	}
+]

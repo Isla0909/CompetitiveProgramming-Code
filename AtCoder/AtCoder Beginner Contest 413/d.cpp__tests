@@ -1,0 +1,66 @@
+[
+	{
+		"correct_answers":
+		[
+			"Yes\nNo\nYes"
+		],
+		"test": "3\n5\n1 8 2 4 16\n5\n-16 24 54 81 -36\n7\n90000 8100 -27000 729 -300000 -2430 1000000\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "1\n4\n2 4 8 -16\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "1\n4\n8 4 -2 -16\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "1\n2\n3 5\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "1\n5\n1 1 1 -1 -1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes"
+		],
+		"test": "1\n3\n1 -1 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No",
+			"Yes"
+		],
+		"test": "1\n5\n1 1 1 -1 -1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes\nNo\nYes\nYes\nNo\nYes"
+		],
+		"test": "6\n5\n-1 -1 -1 -1 -1\n5\n1 -1 -1 -1 -1\n5\n1 1 -1 -1 -1\n5\n1 1 1 -1 -1\n5\n1 1 1 1 -1\n5\n1 1 1 1 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "1\n3\n1 2 -4\n"
+	}
+]

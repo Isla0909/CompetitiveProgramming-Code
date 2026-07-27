@@ -1,0 +1,54 @@
+[
+	{
+		"correct_answers":
+		[
+			"Yes\n4 0 1"
+		],
+		"test": "1\n3 5\n011\n0 0 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "1\n6 12\n110111\n1 2 0 5 -1 9\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes\n5 5 -1000000000000000000 9"
+		],
+		"test": "1\n4\n10\n1101\n5 5 0 9\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "1\n7 13\n1101011\n4 3 0 3 0 -7 20\n\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes\n5 2 -1000000000000000000 -1000000000000000000"
+		],
+		"test": "1\n4 7\n1100\n5 2 4 0\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes\n3 0 4"
+		],
+		"test": "1\n3 7\n101\n3 0 4\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "1\n3 7\n111\n1 1 1\n"
+	},
+	{
+		"test": "1\n6 12\n110111\n1 2 0 5 -1 9\n"
+	}
+]

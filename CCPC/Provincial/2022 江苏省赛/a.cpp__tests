@@ -1,0 +1,11 @@
+[
+	{
+		"test": " 10\n Bin Guigo\n Grevthar Bin\n GALA Grevthar\n GALA TitaN\n GALA Guigo\n GALA Aegis\n GALA Jojo\n GALA Grevthar\n Xiaohu Grevthar\n GALA Aegis\n"
+	},
+	{
+		"test": " 7\n GALA Jojo\n GALA Jojo\n Aegis GALA\n GALA Grevthar\n GALA Aegis\n GALA Guigo\n GALA TitaN\n"
+	},
+	{
+		"test": "7\nGALA Jojo\nAegis Ming\nGALA Grevthar\nGALA Grevthar\nGALA Aegis\nGALA Guigo\nGALA TitaN\n"
+	}
+]

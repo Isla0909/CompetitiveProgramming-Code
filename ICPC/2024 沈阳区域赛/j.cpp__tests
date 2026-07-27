@@ -1,0 +1,8 @@
+[
+	{
+		"test": "LNG 55\nWBG 65\nHLE 70\nBLG 75\nTES 48\nT1 80\nGEN 60\nFLY 50\n"
+	},
+	{
+		"test": " LNG 55\n WBG 65\n HLE 70\n BLG 81\n TES 48\n T1 80\n GEN 60\n FLY 50\n"
+	}
+]

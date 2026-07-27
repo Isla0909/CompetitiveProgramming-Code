@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"hotter\ncooler\nsame\ncooler\nhotter"
+		],
+		"test": "5\nO2 O7\nM9 M2\nG2 G2\nA0 B9\nF8 K1\n"
+	}
+]

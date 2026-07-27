@@ -1,0 +1,23 @@
+[
+	{
+		"correct_answers":
+		[
+			"5"
+		],
+		"test": "2 4\nS.xG\n#?o.\n"
+	},
+	{
+		"correct_answers":
+		[
+			"-1"
+		],
+		"test": "1 5\nSo?oG\n"
+	},
+	{
+		"correct_answers":
+		[
+			"10"
+		],
+		"test": "5 5\nSx?x?\no#o#x\n?o?o?\nx#x#o\n?x?oG\n"
+	}
+]

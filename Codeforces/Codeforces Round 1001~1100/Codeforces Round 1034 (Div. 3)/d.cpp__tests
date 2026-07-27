@@ -1,0 +1,12 @@
+[
+	{
+		"correct_answers":
+		[
+			"Bob\nAlice\nAlice\nBob\nBob\nAlice"
+		],
+		"test": "6\n5 2\n11011\n7 4\n1011011\n6 1\n010000\n4 1\n1111\n8 3\n10110110\n6 4\n111111\n"
+	},
+	{
+		"test": "1\n1 100\n1\n"
+	}
+]

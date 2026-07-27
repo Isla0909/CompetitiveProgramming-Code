@@ -1,0 +1,118 @@
+[
+	{
+		"correct_answers":
+		[
+			"shi er yi san qian si bai wu shi liu wan qi qian ling jiu"
+		],
+		"test": "1234567009\n",
+		"uncorrect_answers":
+		[
+			"yi shi er yi san qian si bai wu shi liu wan qi qian ling jiu"
+		]
+	},
+	{
+		"correct_answers":
+		[
+			"er shi yi"
+		],
+		"test": "2000000000\n"
+	},
+	{
+		"correct_answers":
+		[
+			"ling"
+		],
+		"test": "0\n"
+	},
+	{
+		"correct_answers":
+		[
+			"san bai san shi san"
+		],
+		"test": "333\n"
+	},
+	{
+		"correct_answers":
+		[
+			"san wan san qian san bai san shi san"
+		],
+		"test": "33333\n"
+	},
+	{
+		"correct_answers":
+		[
+			"san"
+		],
+		"test": "3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"san shi san"
+		],
+		"test": "33\n"
+	},
+	{
+		"correct_answers":
+		[
+			"san wan ling san bai ling san"
+		],
+		"test": "30303\n"
+	},
+	{
+		"correct_answers":
+		[
+			"shi yi ling san bai ling san wan san qian san bai san shi san"
+		],
+		"test": "1003033333\n"
+	},
+	{
+		"correct_answers":
+		[
+			"yi bai ling san"
+		],
+		"test": "103\n"
+	},
+	{
+		"correct_answers":
+		[
+			"shi yi wan si qian wu bai yi shi si"
+		],
+		"test": "114514\n"
+	},
+	{
+		"correct_answers":
+		[
+			"yi bai yi shi yi wan"
+		],
+		"test": "1110000\n"
+	},
+	{
+		"correct_answers":
+		[
+			"yi wan ling yi shi"
+		],
+		"test": "10010\n"
+	},
+	{
+		"correct_answers":
+		[
+			"shi wan"
+		],
+		"test": "100000\n"
+	},
+	{
+		"correct_answers":
+		[
+			"yi qian ling yi"
+		],
+		"test": "1001\n"
+	},
+	{
+		"correct_answers":
+		[
+			"shi wan ling yi qian"
+		],
+		"test": "101000\n"
+	}
+]

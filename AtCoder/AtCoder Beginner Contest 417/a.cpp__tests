@@ -1,0 +1,11 @@
+[
+	{
+		"test": "7 1 3\natcoder\n"
+	},
+	{
+		"test": "1 0 0\na\n"
+	},
+	{
+		"test": "20 4 8\nabcdefghijklmnopqrst\n"
+	}
+]

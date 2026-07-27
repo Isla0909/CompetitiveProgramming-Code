@@ -1,0 +1,18 @@
+[
+	{
+		"correct_answers":
+		[
+			"RRHRRH\nNO\nHRRHRH\nNO\nNO\nRHRH\nRRHH\nRH\nRRRH\nRRHH"
+		],
+		"test": "10\n6\nNENSNE\n3\nWWW\n6\nNESSWS\n2\nSN\n2\nWE\n4\nSSNN\n4\nWESN\n2\nSS\n4\nEWNN\n4\nWEWE\n"
+	},
+	{
+		"test": "1\n2\nSS\n"
+	},
+	{
+		"test": "1\n4\nSSNN\n"
+	},
+	{
+		"test": "1\n4\nWESN\n"
+	}
+]

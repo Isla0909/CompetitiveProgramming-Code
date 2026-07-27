@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"YY\nYY\nYY\nYY\nYY\nYY\nNY\nYY"
+		],
+		"test": "4\n2 2\n11\n11\n2 2\n00\n00\n2 2\n10\n01\n2 2\n10\n00\n"
+	}
+]

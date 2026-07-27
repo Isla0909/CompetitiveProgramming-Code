@@ -1,0 +1,19 @@
+[
+	{
+		"correct_answers":
+		[
+			"2\n1\n2\n2\n1"
+		],
+		"test": "5 3\n1 2 3\n100 THU\n110 PKU\n95 PKU\n105 THU\n115 PKU\n"
+	},
+	{
+		"correct_answers":
+		[
+			"4\n2\n4\n3\n1"
+		],
+		"test": " 5 2\n 2 3\n 100 THU\n 110 PKU\n 95 PKU\n 105 THU\n 115 PKU\n"
+	},
+	{
+		"test": "9 4\n2 3 9 2\n10 a\n9 b\n8 a\n7 a\n6 b\n5 a\n3 a\n2 b\n4 b\n"
+	}
+]

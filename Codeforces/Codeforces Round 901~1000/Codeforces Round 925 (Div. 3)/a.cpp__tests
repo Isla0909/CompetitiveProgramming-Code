@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"aav\nrzz\naaa\nczz\nauz"
+		],
+		"test": "5\n24\n70\n3\n55\n48\n"
+	}
+]

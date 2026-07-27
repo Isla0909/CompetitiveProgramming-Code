@@ -1,0 +1,30 @@
+[
+	{
+		"correct_answers":
+		[
+			"mississippi"
+		],
+		"test": "8\nm 1\ni 1\ns 2\ni 1\ns 2\ni 1\np 2\ni 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Too Long"
+		],
+		"test": "7\na 1000000000000000000\nt 1000000000000000000\nc 1000000000000000000\no 1000000000000000000\nd 1000000000000000000\ne 1000000000000000000\nr 1000000000000000000\n"
+	},
+	{
+		"correct_answers":
+		[
+			"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+		],
+		"test": "1\na 100\n"
+	},
+	{
+		"correct_answers":
+		[
+			"ggggjmmmmeeeedddiiii"
+		],
+		"test": "6\ng 4\nj 1\nm 4\ne 4\nd 3\ni 4\n"
+	}
+]

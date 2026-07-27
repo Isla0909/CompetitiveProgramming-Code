@@ -1,0 +1,30 @@
+[
+	{
+		"correct_answers":
+		[
+			"400"
+		],
+		"test": "7 3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"inf"
+		],
+		"test": "1000000 2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1000000000"
+		],
+		"test": "999999999 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"inf"
+		],
+		"test": "998244353 99\n"
+	}
+]

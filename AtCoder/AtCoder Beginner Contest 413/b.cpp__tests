@@ -1,0 +1,23 @@
+[
+	{
+		"correct_answers":
+		[
+			"11"
+		],
+		"test": "4\nat\natco\ncoder\nder\n"
+	},
+	{
+		"correct_answers":
+		[
+			"7"
+		],
+		"test": "5\na\naa\naaa\naaaa\naaaaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"90"
+		],
+		"test": "10\narmiearggc\nukupaunpiy\ncogzmjmiob\nrtwbvmtruq\nqapfzsitbl\nvhkihnipny\nybonzypnsn\nesxvgoudra\nusngxmaqpt\nyfseonwhgp\n"
+	}
+]

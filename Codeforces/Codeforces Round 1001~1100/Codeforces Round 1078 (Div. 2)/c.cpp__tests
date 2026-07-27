@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"aaa\ninfinfinf\nacac"
+		],
+		"test": "3\n3 2\nabc\nbaa\n9 2\niiinnnfff\nnnfiffinn\n4 2\nacbd\nbdac\n"
+	}
+]

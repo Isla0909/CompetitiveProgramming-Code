@@ -1,0 +1,1 @@
+[{"test": "5\n4\nabba\nbcbb\nbccb\nabba\n2\nab\nba\n6\ncodefo\nrcesco\ndeforc\nescode\nforces\ncodefo\n4\nbaaa\nabba\nbaba\nbaab\n4\nbbaa\nabba\naaba\nabba\n", "correct_answers": ["1\n2\n181\n5\n9"]}]

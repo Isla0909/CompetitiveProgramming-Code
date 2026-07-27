@@ -1,0 +1,30 @@
+[
+	{
+		"correct_answers":
+		[
+			"5"
+		],
+		"test": "4\n1 3 2 4\n0 0 1 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"4"
+		],
+		"test": "6\n1 3 4 2 5 6\n0 1 0 1 0 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"7"
+		],
+		"test": "7\n3 3 4 4 5 3 1\n0 0 1 1 1 0 0\n"
+	},
+	{
+		"correct_answers":
+		[
+			"200000000"
+		],
+		"test": "2\n100000000 100000000\n1 0\n"
+	}
+]

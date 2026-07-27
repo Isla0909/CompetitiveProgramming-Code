@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"red\npurple"
+		],
+		"test": "2\n2\n1 2\n2\n1 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"red"
+		],
+		"test": "1\n2\n100 100\n"
+	}
+]

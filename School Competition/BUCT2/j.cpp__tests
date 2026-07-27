@@ -1,0 +1,19 @@
+[
+	{
+		"correct_answers":
+		[
+			"4"
+		],
+		"test": "3\nBBB\nBBB\nW?W\n"
+	},
+	{
+		"correct_answers":
+		[
+			"4"
+		],
+		"test": "2\nBW\nWB\n"
+	},
+	{
+		"test": "2\n??\n??\n"
+	}
+]

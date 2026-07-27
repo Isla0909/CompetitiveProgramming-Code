@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"fix"
+		],
+		"test": "fixprefixsuffix\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Just a legend"
+		],
+		"test": "abcdabc\n"
+	}
+]

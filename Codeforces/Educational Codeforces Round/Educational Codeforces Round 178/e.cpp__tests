@@ -1,0 +1,26 @@
+[
+	{
+		"correct_answers":
+		[
+			"0\n1\n2"
+		],
+		"test": "7 3\nabacaba\n3\ncc\nbcb\nb\n"
+	},
+	{
+		"correct_answers":
+		[
+			"5\n4\n3\n2\n1\n0"
+		],
+		"test": "5 1\naaaaa\n6\na\naa\naaa\naaaa\naaaaa\naaaaaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1\n0\n0"
+		],
+		"test": "7 2\naaaaaaa\n3\naaaaaa\nbaaaa\nc\n"
+	},
+	{
+		"test": "25 3\nacaacaabbcbacbcbbaacaaaba\n1\ncabb\n"
+	}
+]

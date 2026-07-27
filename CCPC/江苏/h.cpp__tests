@@ -1,0 +1,22 @@
+[
+	{
+		"correct_answers":
+		[
+			"0"
+		],
+		"test": "4\naaaa\naaaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"2"
+		],
+		"test": "9\naaaaaaaaa\naaabbbaaa\n"
+	},
+	{
+		"test": "17\nsofiawilumerrymee\nsofiawillumarryme\n"
+	},
+	{
+		"test": "32\ntakethesebrokenwingandlearntofly\ntakethesesunkeneyesandlearntosee\n"
+	}
+]

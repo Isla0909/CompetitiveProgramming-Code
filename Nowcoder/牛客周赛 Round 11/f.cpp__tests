@@ -1,0 +1,35 @@
+[
+	{
+		"correct_answers":
+		[
+			"4 3 2 1"
+		],
+		"test": "4 2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"5 3 4 2 1"
+		],
+		"test": "5 3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"-1"
+		],
+		"test": "7 3\n"
+	},
+	{
+		"test": "7 4\n"
+	},
+	{
+		"test": "7 6\n"
+	},
+	{
+		"test": "6 5\n"
+	},
+	{
+		"test": "6 4\n"
+	}
+]

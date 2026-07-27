@@ -1,0 +1,18 @@
+[
+	{
+		"correct_answers":
+		[
+			"acodert\nx\nnsuke"
+		],
+		"test": "3\n7\natcoder\n1\nx\n5\nsnuke\n"
+	},
+	{
+		"test": "1\n3\ncba\n"
+	},
+	{
+		"test": "1\n2\nab\n"
+	},
+	{
+		"test": "1\n4\ncacb\n"
+	}
+]

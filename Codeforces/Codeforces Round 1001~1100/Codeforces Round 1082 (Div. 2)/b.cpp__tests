@@ -1,0 +1,61 @@
+[
+	{
+		"correct_answers":
+		[
+			"YES\nNO\nYES\nNO"
+		],
+		"test": "4\n5\nababa\n5\nbaaba\n5\n?b?ab\n6\naa?b?b\n"
+	},
+	{
+		"correct_answers":
+		[
+			"NO"
+		],
+		"test": "1\n3\naaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"NO"
+		],
+		"test": "1\n3\nbaa\n"
+	},
+	{
+		"correct_answers":
+		[
+			"YES"
+		],
+		"test": "1\n3\naab\n"
+	},
+	{
+		"test": "1\n5\n?b?ab\n"
+	},
+	{
+		"correct_answers":
+		[
+			"YES"
+		],
+		"test": "1\n7\nabab???\n"
+	},
+	{
+		"test": "1\n8\nababa??a\n"
+	},
+	{
+		"test": "1\n8\nabababba\n"
+	},
+	{
+		"test": "1\n2\n??\n"
+	},
+	{
+		"test": "1\n4\n?aab\n"
+	},
+	{
+		"test": "1\n4\n?aa?\n"
+	},
+	{
+		"test": "1\n1\nb\n"
+	},
+	{
+		"test": "1\n3\nbab\n"
+	}
+]

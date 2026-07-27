@@ -1,0 +1,19 @@
+[
+	{
+		"correct_answers":
+		[
+			"YES\nYES\nNO"
+		],
+		"test": "3\n3 1 3\nILL\nLLI\n1 1 1\nI\nI\n3 1 3\nIIL\nLLI\n"
+	},
+	{
+		"correct_answers":
+		[
+			"YES"
+		],
+		"test": "1\n1\n1\n1\nI\nI\n\n"
+	},
+	{
+		"test": "1\n3 1 2\nILL\nLIL"
+	}
+]

@@ -1,0 +1,19 @@
+[
+	{
+		"correct_answers":
+		[
+			"Yes\nNo"
+		],
+		"test": "2\n4 4\nCLD.\nUDCL\nDCLD\nCLRC\n2 3\nDRC\nCLU\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No"
+		],
+		"test": "1\n2 2\nD.\nCC"
+	},
+	{
+		"test": "1\n2 2\nC.\nCC\n"
+	}
+]

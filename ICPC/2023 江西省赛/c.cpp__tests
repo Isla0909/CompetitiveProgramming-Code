@@ -1,0 +1,40 @@
+[
+	{
+		"correct_answers":
+		[
+			"GOOD"
+		],
+		"test": " 2 3\n 4 5\n"
+	},
+	{
+		"correct_answers":
+		[
+			"BAD"
+		],
+		"test": "1 1\n2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"BAD"
+		],
+		"test": "1 4\n5\n"
+	},
+	{
+		"correct_answers":
+		[
+			"BAD"
+		],
+		"test": "1 2\n15\n"
+	},
+	{
+		"correct_answers":
+		[
+			"BAD"
+		],
+		"test": "2 1\n3 1\n"
+	},
+	{
+		"test": "1 4\n17\n"
+	}
+]

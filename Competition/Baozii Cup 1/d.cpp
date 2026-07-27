@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <bitset>
+#include <cmath>
+#include <ctime>
+#include <random>
+#include <chrono>
+#include <functional>
+#include <cassert>
+#include <iomanip>
+#define ff first
+#define se second
+#define endl '\n'
+using namespace std;
+using u32 = unsigned;
+using i64 = long long;
+using u64 = unsigned long long;
+using u128 = unsigned __int128;
+constexpr long long inf = 1e18;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
+
+signed main()
+{
+	cin.tie(0) -> sync_with_stdio(false);
+
+	int T; cin >>T;
+	while(T --)
+	{
+		int n; cin >>n;
+		vector g(n + 1, vector<int>(n + 2, -1));
+		vector<bool> st(n * n + 1);
+
+		function <void(int, int, int)> dfs;
+		int idx = 1;
+		dfs = [&](int x, int y, int u) -> void
+		{
+			if(x == n && y == n + 1) return ;
+
+			g[x][y] = idx; st[idx] = 1; idx ++;
+
+			if(u == 0) dfs(x, y + 1, 1 - u);
+			else dfs(x + 1, y, 1 - u);
+		};
+
+		dfs(1, 1, 0);
+
+		g[n][n - 1] = idx, st[idx] = 1, idx ++;
+		for(int i = 1; i <= n; i ++)
+			for(int j = 1; j <= n; j ++)
+				if(g[i][j] == -1)
+				{
+					while(st[idx]) idx ++;
+					g[i][j] = idx;
+					idx ++;
+				}
+
+		for(int i = 1; i <= n; i ++)
+			for(int j = 1; j <= n; j ++)
+				cout <<g[i][j] <<" \n"[j == n];
+	}
+	return 0;
+}

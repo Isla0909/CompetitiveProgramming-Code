@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"YES\n(())\nYES\n()()()\nNO\nYES\n()(()())"
+		],
+		"test": "4\n)(\n(()\n()\n))()\n"
+	}
+]

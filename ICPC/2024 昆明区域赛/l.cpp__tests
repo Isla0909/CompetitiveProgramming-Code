@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"Yes\nNo\nYes"
+		],
+		"test": "3\n3 2\n1 1 4\n2 6\n3 2\n1 1 4\n2 7\n2 1\n100 100\n2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"No\nNo\nYes"
+		],
+		"test": "3\n7 1\n1 1 1 1 1 1 1\n9\n5 2\n3 4 5 6 7\n1 6\n5 3\n3 4 5 6 7\n1 5 7\n"
+	}
+]

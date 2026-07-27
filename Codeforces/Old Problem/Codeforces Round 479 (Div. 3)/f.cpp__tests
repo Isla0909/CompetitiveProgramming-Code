@@ -1,0 +1,30 @@
+[
+	{
+		"correct_answers":
+		[
+			"4\n2 3 5 6"
+		],
+		"test": "7\n3 3 4 7 5 6 8\n"
+	},
+	{
+		"correct_answers":
+		[
+			"2\n1 4"
+		],
+		"test": "6\n1 3 5 2 4 6\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1\n1"
+		],
+		"test": "4\n10 9 8 7\n"
+	},
+	{
+		"correct_answers":
+		[
+			"6\n1 2 3 7 8 9"
+		],
+		"test": "9\n6 7 8 3 4 5 9 10 11\n"
+	}
+]

@@ -1,0 +1,59 @@
+[
+	{
+		"correct_answers":
+		[
+			"1\n5\n3\n4\n3"
+		],
+		"test": "5\n5\n1 2 3 4 5\n5\n1 3 5 7 9\n5\n1 2 5 6 5\n7\n1 2 4 5 3 7 8\n9\n9 8 9 2 3 4 4 5 3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"3\n1"
+		],
+		"test": "2\n5\n1 2 4 5 3\n6\n2 3 4 4 5 3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "1\n2\n2 3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"5"
+		],
+		"test": "1\n5\n3 3 3 2 2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"5"
+		],
+		"test": "1\n7\n3 3 3 2 3 3 2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"4"
+		],
+		"test": "1\n12\n3 3 2 3 4 4 3 3 3 2 3 3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "1\n8\n2 3 4 5 3 4 5 6\n"
+	},
+	{
+		"correct_answers":
+		[
+			"3",
+			"2"
+		],
+		"test": "1\n6\n2 3 4 5 9 3\n"
+	}
+]

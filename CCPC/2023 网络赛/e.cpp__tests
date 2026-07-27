@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"4\n0 0\n0 1\n1 0\n1 1"
+		],
+		"test": "2\nRU\n"
+	},
+	{
+		"correct_answers":
+		[
+			"4\n0 -1\n0 0\n1 -1\n1 0"
+		],
+		"test": "4\nLRUD\n"
+	}
+]

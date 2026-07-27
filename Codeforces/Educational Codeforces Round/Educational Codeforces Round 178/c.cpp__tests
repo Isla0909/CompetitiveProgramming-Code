@@ -1,0 +1,8 @@
+[
+	{
+		"test": "8\n2\nAB\n2\nBA\n4\nABAB\n4\nBABA\n3\nBAA\n5\nAAAAB\n5\nBAAAB\n6\nBBBAAA\n"
+	},
+	{
+		"test": "1\n6\nABBBAB\n"
+	}
+]

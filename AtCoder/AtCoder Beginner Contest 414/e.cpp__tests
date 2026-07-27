@@ -1,0 +1,17 @@
+[
+	{
+		"correct_answers":
+		[
+			"12",
+			"20"
+		],
+		"test": "7\n"
+	},
+	{
+		"correct_answers":
+		[
+			"94700"
+		],
+		"test": "441\n"
+	}
+]

@@ -1,0 +1,74 @@
+最大连续子段和
+
+
+双指针
+https://codeforces.com/contest/2027/problem/D1
+https://codeforces.com/contest/2027/problem/D2
+
+最优状态转移
+https://codeforces.com/contest/2028/problem/D
+
+状态dp
+https://codeforces.com/contest/1926/problem/G
+https://codeforces.com/problemset/problem/2061/C
+https://www.luogu.com.cn/problem/P8803
+
+
+树上dp
+https://www.luogu.com.cn/problem/P2014
+https://codeforces.com/gym/105949/problem/J
+
+旅行商问题
+https://www.luogu.com.cn/problem/P12220
+
+dp and 数论
+https://codeforces.com/problemset/problem/2114/F
+
+质因数dp
+https://codeforces.com/contest/1992/problem/F
+https://codeforces.com/gym/105851
+
+dp和组合数学
+https://codeforces.com/contest/2086/problem/D
+https://codeforces.com/gym/105911/problem/I
+
+分组dp
+https://atcoder.jp/contests/abc419/tasks/abc419_e
+
+dp and topsort
+https://codeforces.com/problemset/problem/2110/D
+https://codeforces.com/contest/2044/problem/G1
+https://codeforces.com/contest/2044/problem/G2
+
+dp方案数统计
+https://www.luogu.com.cn/problem/P6191
+
+数学期望dp
+https://www.luogu.com.cn/problem/P4316
+https://codeforces.com/gym/105981/problem/J
+
+递推型dp 贪心
+https://codeforces.com/contest/1989/problem/D
+
+贪心
+https://codeforces.com/contest/1845/problem/D(定一议一)
+https://codeforces.com/contest/1901/problem/D(最坏枚举)
+
+
+图论可达性问题
+https://codeforces.com/contest/1608/problem/C
+
+渐进式思考
+https://codeforces.com/contest/1989/problem/B
+
+正难则反
+https://codeforces.com/contest/1901/problem/B  (条件转化)
+https://codeforces.com/contest/660/problem/C    (二分答案)
+https://codeforces.com/contest/2125/problem/D  
+
+根号分治 分块
+https://codeforces.com/contest/1207/problem/F
+https://codeforces.com/contest/2126/problem/F
+
+鸽巢定理
+https://codeforces.com/problemset/problem/2065/F

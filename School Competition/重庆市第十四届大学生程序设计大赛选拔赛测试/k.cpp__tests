@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"cabd"
+		],
+		"test": "6\nAPPEND a\nAPPEND b\nREVERSE\nAPPEND c\nREVERSE\nAPPEND d"
+	}
+]

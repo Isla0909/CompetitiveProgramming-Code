@@ -1,0 +1,68 @@
+[
+	{
+		"correct_answers":
+		[
+			"6\n96\nRichman\nImpossible"
+		],
+		"test": "4\n4 2\n1 2 4 8\n4 0\n100 99 98 97\n2 2\n10000 10000\n5 3\n0 0 0 0 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"2"
+		],
+		"test": "1\n4 3\n0 0 1 2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"4"
+		],
+		"test": "1\n4 3\n0 0 2 3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Richman",
+			"0"
+		],
+		"test": "1\n4 3\n0 0 0 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"145"
+		],
+		"test": "1\n4 3\n100 32 10 4\n"
+	},
+	{
+		"correct_answers":
+		[
+			"145"
+		],
+		"test": "1\n4 3\n4 10 32 100\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "1\n4 3\n0 1 1 0\n"
+	},
+	{
+		"correct_answers":
+		[
+			"31"
+		],
+		"test": "1\n3 0\n32 32 32\n"
+	},
+	{
+		"test": "1\n6 1\n90 51 4 23 17 84\n"
+	},
+	{
+		"test": "1\n4 1\n13 16 4 3\n"
+	},
+	{
+		"test": "1\n5 1\n17 3 20 17 7\n"
+	}
+]

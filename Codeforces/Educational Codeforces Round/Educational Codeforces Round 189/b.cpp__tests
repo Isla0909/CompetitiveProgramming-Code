@@ -1,0 +1,12 @@
+[
+	{
+		"correct_answers":
+		[
+			"YES\nNO\nYES\nYES\nNO\nYES\nYES\nYES"
+		],
+		"test": "8\nabbaba\naaaaa\nbababba\nab\nabbaabba\nbbb\nababa\naabb\n"
+	},
+	{
+		"test": "1\nbbb\n"
+	}
+]

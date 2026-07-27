@@ -1,0 +1,33 @@
+[
+	{
+		"correct_answers":
+		[
+			"Sorted"
+		],
+		"test": "5\n1 4 3 2 5\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Failed"
+		],
+		"test": "4\n4 4 2 1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Sorted"
+		],
+		"test": "12\n1 2 3 8 10 10 14 15 16 16 16 17\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Sorted"
+		],
+		"test": "7\n1 2 2 3 5 7 6\n"
+	},
+	{
+		"test": "26\n14 29 12 28 28 3 27 29 30 30 30 30 30 30 15 1 22 28 8 30 30 17 20 10 5 18\n"
+	}
+]

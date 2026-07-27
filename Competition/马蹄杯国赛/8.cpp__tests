@@ -1,0 +1,22 @@
+[
+	{
+		"correct_answers":
+		[
+			"32"
+		],
+		"test": "5 3\nABCAB\n"
+	},
+	{
+		"correct_answers":
+		[
+			"372288"
+		],
+		"test": "20 10\nABCABCABCABCABCABCAA\n"
+	},
+	{
+		"test": "3 3\nABC\n"
+	},
+	{
+		"test": "4 3\nABCA\n"
+	}
+]

@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"Rated"
+		],
+		"test": "1500\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Unrated"
+		],
+		"test": "1600\n"
+	}
+]

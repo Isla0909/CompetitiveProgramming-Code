@@ -1,0 +1,23 @@
+[
+	{
+		"correct_answers":
+		[
+			"16"
+		],
+		"test": "4 4\nzzzz\nzzz.\n.z..\nzzzz\n"
+	},
+	{
+		"correct_answers":
+		[
+			"2"
+		],
+		"test": "1 4\nz.z.\n"
+	},
+	{
+		"correct_answers":
+		[
+			"5"
+		],
+		"test": "2 2\nzz\nzz\n"
+	}
+]
