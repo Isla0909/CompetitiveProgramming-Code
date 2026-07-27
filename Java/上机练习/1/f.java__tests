@@ -1,9 +1,0 @@
-[
-	{
-		"correct_answers":
-		[
-			"choice=double\n1.58 , 3.00,3.14\nchoice=line\nAAAAAAAAAA\nchoice=int\n6\nchoice=str\n987654321\nchoice=line\nDDDDDDDDDD\nchoice=end\nother"
-		],
-		"test": "double\n1.578 3.0 3.14259\nline\naaaaaaaaaa\nint\n1      2    3\nstr\n321 654 987\nline\ndddddddddd\nend\n"
-	}
-]
