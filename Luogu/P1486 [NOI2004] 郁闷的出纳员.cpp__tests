@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"10\n20\n-1\n2"
+		],
+		"test": "9 10\nI 60\nI 70\nS 50\nF 2\nI 30\nS 15\nA 5\nF 1\nF 2\n"
+	}
+]
