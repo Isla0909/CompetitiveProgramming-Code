@@ -83,7 +83,7 @@ signed main()
 	auto dfs = [&](auto &&self, int u, int fa) -> void
 	{
 		f[u][0] = w[u];
-		f[u][1] = INF, f[u][2] = 0;
+		f[u][1] = inf, f[u][2] = 0;
 
 		i64 val = inf;
 		for(auto v : adj[u])
