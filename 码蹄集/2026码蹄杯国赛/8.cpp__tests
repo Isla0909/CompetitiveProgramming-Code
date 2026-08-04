@@ -1,8 +1,16 @@
 [
 	{
+		"correct_answers":
+		[
+			"5\nd e a c b"
+		],
 		"test": "abccbbaabbccbbcccbbdeedbbd\n"
 	},
 	{
+		"correct_answers":
+		[
+			"2\nb a"
+		],
 		"test": "ababa\n"
 	}
 ]

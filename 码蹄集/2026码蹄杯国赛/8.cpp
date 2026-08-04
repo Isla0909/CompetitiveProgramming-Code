@@ -21,7 +21,6 @@ u64 fun2(int l, int r)
 int n;
 bool check(int l, int r)
 {
-	//cout <<l <<" " <<r <<" " <<n + 1 - r <<" " <<n + 1 - l <<endl;
 	return fun1(l, r) == fun2(n + 1 - r, n + 1 - l);
 }
 
@@ -50,9 +49,7 @@ signed main()
 		p[i] = p[i - 1] * P;
 	}
 
-	// if(check(1, 5)) cout <<"Yes" <<endl;
-
-	unordered_map<u64, bool> mp;
+	unordered_map<u64, bool> mp1;
 	unordered_map<u64, bool> mp2;
 	vector<i64> cnt(26);
 	for(int i = 1; i <= n; i ++)
@@ -70,9 +67,9 @@ signed main()
 		while(L <= R)
 		{
 			u64 val = fun1(L, R);
-			if(mp[val]) break;
+			if(mp1[val]) break;
 
-			mp[val] = true;
+			mp1[val] = true;
 			
 			for(int j = 0; j < 26; j ++)
 				cnt[j] += pre[R][j] - pre[L - 1][j];
@@ -80,8 +77,6 @@ signed main()
 			L ++, R --;
 		}
 	}
-
-	//cout <<cnt[3] <<" " <<cnt[4] <<endl;
 
 	for(int i = 1; i + 1 <= n; i ++)
 	{
@@ -111,7 +106,6 @@ signed main()
 		}
 	}
 
-
 	vector<int> p(26);
 	iota(p.begin(), p.end(), 0);
 	sort(p.begin(), p.end(), [&](int i, int j)
@@ -123,7 +117,6 @@ signed main()
 	for(int i = 0; i < 26; i ++)
 		if(cnt[i]) ans ++;
 	cout <<ans <<endl;
-	// cout <<cnt[3] <<" " <<cnt[4] <<endl;
 	for(int i = 0; i < 26; i ++)
 		if(cnt[p[i]]) cout <<char('a' + p[i]) <<" ";
 	return 0;
