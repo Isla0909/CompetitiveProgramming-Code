@@ -1,0 +1,165 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <bitset>
+#include <cmath>
+#include <ctime>
+#include <random>
+#include <chrono>
+#include <functional>
+#include <cassert>
+#include <iomanip>
+#include <array>
+#define ff first
+#define se second
+#define endl '\n'
+using namespace std;
+using i32 = signed;
+using u32 = unsigned;
+using i64 = long long;
+using u64 = unsigned long long;
+using f64 = long double;
+using i128 = __int128;
+using u128 = unsigned __int128;
+constexpr long long inf = 1e18;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
+
+void tell(int l, vector<int> &v)
+{
+	for(int i = l; i < v.size(); i ++)
+		cout <<v[i] <<" \n"[i == v.size() - 1];
+}
+
+bool cmp(const pii &a, const pii &b)
+{
+	return a.se < b.se;
+}
+
+struct cxy
+{
+	int v, c, w;
+	cxy(int v, int c, int w) : v(v), c(c), w(w) {}
+};
+
+struct task
+{
+	int id, c, op;
+	task(int id, int c, int op) : id(id), c(c), op(op) {}
+};
+
+signed main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+	int n, q; cin >>n >>q;
+	vector<vector<cxy>> adj(n + 1);
+	for(int i = 1; i < n; i ++)
+	{
+		int u, v, c, w; cin >>u >>v >>c >>w;
+		adj[u].emplace_back(v, c, w);
+		adj[v].emplace_back(u, c, w);
+	}
+
+	int len = __lg(n) + 1;
+	vector<int> dep(n + 1);
+	vector<i64> dist(n + 1);
+	vector f(n + 1, vector<int>(len));
+
+	auto dfs1 = [&](this auto &&self, int u, int fa) -> void
+	{
+		dep[u] = dep[fa] + 1; 
+		f[u][0] = fa;
+
+		for(int j = 1; j < len; j ++)
+			f[u][j] = f[f[u][j - 1]][j - 1];
+
+		for(auto [v, c, w] : adj[u])
+		{
+			if(v == fa) continue;
+
+			dist[v] = dist[u] + w;
+			self(v, u);
+		}
+	};
+
+	dfs1(1, 0);
+
+	auto lca = [&](int a, int b)
+	{
+		if(dep[a] < dep[b]) swap(a, b);
+
+		for(int j = len - 1; j >= 0; j --)
+			if(dep[f[a][j]] >= dep[b])
+				a = f[a][j];
+
+		if(a == b) return a;
+
+		for(int j = len - 1; j >= 0; j --)
+			if(f[a][j] != f[b][j])
+			{
+				a = f[a][j];
+				b = f[b][j];
+			}
+		return f[a][0];
+	};
+
+	vector<vector<task>> event(n + 1);
+	vector<int> nw(q + 1), precnt(q + 1);
+	vector<i64> ans(q + 1), presum(q + 1);
+	for(int i = 1; i <= q; i ++)
+	{
+		int col, u, v;
+		cin >>col >>nw[i] >>u >>v;
+
+		int p = lca(u, v);
+
+		ans[i] = dist[u] + dist[v] - 2 * dist[p];
+
+		event[u].emplace_back(i, col, 1);
+		event[v].emplace_back(i, col, 1);
+		event[p].emplace_back(i, col, -2);
+	}
+
+	vector<int> cnt(n + 1);
+	vector<i64> sum(n + 1);
+	auto dfs2 = [&](this auto &&self, int u, int fa) -> void
+	{
+		for(auto [id, c, op] : event[u])
+		{
+			precnt[id] += 1LL * op * cnt[c];
+			presum[id] += 1LL * op * sum[c];
+		}
+
+		for(auto [v, c, w] : adj[u])
+		{
+			if(v == fa) continue;
+
+			cnt[c] ++;
+			sum[c] += w;
+
+			self(v, u);
+
+			cnt[c] --;
+			sum[c] -= w;
+		}
+	};
+
+	dfs2(1, 0);
+
+	for(int i = 1; i <= q; i ++)
+		cout <<(ans[i] - presum[i] + precnt[i] * nw[i]) <<endl;
+	return 0;
+}
