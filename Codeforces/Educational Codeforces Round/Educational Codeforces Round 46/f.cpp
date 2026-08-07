@@ -269,11 +269,24 @@ signed main()
 	SegmentTree seg(w);
 
 	int m = 500000;
-	vector<int> last(m + 1, -1);
+	vector<int> last(m + 1, -1), ans(q + 1);
 	for(int i = 1; i <= n; i ++)
 	{
 		int x = a[i];
 
+		if(last[x] != -1) seg.rangeSet(1, last[x], last[x], INF);
+
+		seg.rangeSet(1, i, i, last[x]);
+		last[x] = i;
+
+		for(auto [l, id] : query[i])
+		{
+			int p = seg.find_last(1, l, i, l - 1);
+			if(p == -1) ans[id] = 0;
+			else ans[id] = a[p];
+		}
 	}
+	for(int i = 1; i <= q; i ++)
+		cout <<ans[i] <<endl;
 	return 0;
 }

@@ -30,7 +30,6 @@ int main()
 	cin >> n >> s;
 
 	vector<int> z = Z(s);
-
 	for(int p = 1; p < n; p ++)
 	{
 		if(n % p == 0 && z[p] == n - p)
@@ -39,7 +38,6 @@ int main()
 			return 0;
 		}
 	}
-
 	cout << n << endl;
 
 	return 0;
