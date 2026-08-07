@@ -1,61 +1,72 @@
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <bitset>
-#include <cmath>
-#include <ctime>
-#include <random>
-#include <chrono>
-#include <functional>
-#include <cassert>
-#include <iomanip>
-#include <array>
-#define ff first
-#define se second
-#define endl '\n'
+#include <bits/stdc++.h>
 using namespace std;
-using i32 = signed;
-using u32 = unsigned;
-using i64 = long long;
-using u64 = unsigned long long;
-using f64 = long double;
-using i128 = __int128;
-using u128 = unsigned __int128;
-constexpr long long inf = 1e18;
 
-typedef long long ll;
-typedef pair<int, int> pii;
-
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-
-constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
-
-void tell(int l, vector<int> &v)
+vector<int> Z(string &s)
 {
-	for(int i = l; i < v.size(); i ++)
-		cout <<v[i] <<" \n"[i == v.size() - 1];
+	int n = s.size();
+	vector<int> z(n);
+	z[0] = n;
+	for(int i = 1, l = 0, r = 0; i < n; i ++)
+	{
+		if(i <= r) z[i] = min(r - i + 1, z[i - l]);
+		while(i + z[i] < n && s[z[i]] == s[i + z[i]])
+			z[i] ++;
+		if(i + z[i] - 1 > r)
+		{
+			l = i;
+			r = i + z[i] - 1;
+		}
+	}
+	return z;
 }
 
-bool cmp(const pii &a, const pii &b)
+int calc(string s)
 {
-	return a.se < b.se;
+	int n = s.size();
+	string r = s;
+	reverse(r.begin(), r.end());
+
+	string t = r + "#" + s;
+	vector<int> z = Z(t);
+
+	int ans = 0;
+	for(int k = 0; k < n; k ++)
+	{
+		int len = z[n + 1 + k];
+		len = min(len, (n - k) / 2);
+		ans = max(ans, len);
+	}
+	return ans;
 }
 
-signed main()
+int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int T; cin >>T;
-	while(T --)
+	string s;
+	cin >> s;
+
+	int n = s.size();
+	int c = 0;
+
+	while(c < n / 2 && s[c] == s[n - 1 - c])
+		c ++;
+
+	if(c == n / 2)
 	{
-		
+		cout << c << endl;
+		return 0;
 	}
+
+	string mid = s.substr(c, n - 2 * c);
+
+	int ans = calc(mid);
+
+	reverse(mid.begin(), mid.end());
+	ans = max(ans, calc(mid));
+
+	cout << c + ans << endl;
+
 	return 0;
 }
