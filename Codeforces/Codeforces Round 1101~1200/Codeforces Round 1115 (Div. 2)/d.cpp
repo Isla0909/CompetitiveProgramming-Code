@@ -36,7 +36,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
 
-void tell(int l, vector<int> &v)
+void tell(int l, vector<i64> &v)
 {
 	for(int i = l; i < v.size(); i ++)
 		cout <<v[i] <<" \n"[i == v.size() - 1];
@@ -55,7 +55,26 @@ signed main()
 	int T; cin >>T;
 	while(T --)
 	{
-		
-	}
+		int n; cin >>n;
+		vector<i64> a(n + 1), diff(n + 1);
+		for(int i = 1; i <= n; i ++) 
+		{
+			cin >>a[i];
+			diff[i] = a[i] - a[i - 1];
+		}
+		for(int i = 2; i <= n - 1; i ++)
+		{
+			int j = i;
+			while(j + 1 <= n && (diff[j] & 1) == (diff[j + 1] & 1)) j ++;
+
+			sort(diff.begin() + i, diff.begin() + j + 1);
+			i = j;
+		}
+
+		for(int i = 2; i <= n; i ++)
+			a[i] = a[i - 1] + diff[i];
+
+		tell(1, a);
+	}	
 	return 0;
 }

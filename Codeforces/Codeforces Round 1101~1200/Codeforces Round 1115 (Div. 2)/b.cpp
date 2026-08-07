@@ -55,7 +55,46 @@ signed main()
 	int T; cin >>T;
 	while(T --)
 	{
-		
+		int n; cin >>n;
+		string s; cin >>s;
+		s = " " + s;
+
+		vector<int> pre(n + 1);
+		for(int i = 1; i <= n; i ++)
+		{
+			if(s[i] == '1') pre[i] = pre[i - 1] + 1;
+			else pre[i] = pre[i - 1] - 1;
+		}
+
+		if(abs(pre[n]) > 2)
+		{
+			cout <<-1 <<endl;
+			continue;
+		}
+
+		auto get = [&](char c) -> int
+		{
+			int len = 0;
+			for(int i = 1; i <= n; i ++)
+			{
+				if(s[i] != c) continue;
+
+				len ++;
+				c ^= 1;
+			}
+			return len;
+		};
+		int l0 = get('0'), l1 = get('1');
+		int ans = 0;
+		if(abs(pre[n]) <= 1) ans = max({ans, l0 - l0 % 2, l1 - l1 % 2});
+
+		if(abs(pre[n] + 1) <= 1) ans = max(ans, l0 - !(l0 & 1));
+
+		if(abs(pre[n] - 1) <= 1) ans = max(ans, l1 - !(l1 & 1));
+		cout <<n - ans <<endl;
 	}
 	return 0;
 }
+//111100001100
+//11100
+//0110

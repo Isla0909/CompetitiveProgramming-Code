@@ -44,8 +44,7 @@ void tell(int l, vector<int> &v)
 
 bool cmp(const pii &a, const pii &b)
 {
-	if(a.se != b.se) return a.se < b.se;
-	return a.ff > b.ff;
+	return a.se < b.se;
 }
 
 signed main()
@@ -56,27 +55,7 @@ signed main()
 	int T; cin >>T;
 	while(T --)
 	{
-		int n; cin >>n;
-		map<int, int> mp;
-		int ans = 0;
-		for(int i = 1; i <= n; i ++)
-		{
-			int x; cin >>x;
-			mp[x] ++;
-			ans += x;
-		}
-
-		int M = 0, v = 0;
-		for(int i = 1; i <= 1000; i ++)
-		{
-			if(mp[i] > M)
-			{
-				M = mp[i];
-				v = i;
-			}
-		}
-		int c = n - M;
-		cout <<ans - max(0, M - c - 2) * v <<endl;
+		
 	}
 	return 0;
 }

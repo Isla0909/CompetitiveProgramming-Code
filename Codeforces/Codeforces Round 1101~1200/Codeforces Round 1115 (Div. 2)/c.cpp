@@ -47,6 +47,98 @@ bool cmp(const pii &a, const pii &b)
 	return a.se < b.se;
 }
 
+template <typename T> 
+struct Fenwick
+{
+	int n;
+	vector<T> tr;
+
+	#define lowbit(x) (x & -x)
+
+	void initial(int n_)
+	{
+		n = n_;
+		tr.assign(n + 1, T{});
+	}
+
+	Fenwick(int n_ = 0)
+	{
+		initial(n_);
+	}
+
+	void add(int x, const T &c)
+	{
+		for(int i = x; i <= n; i += lowbit(i))
+			tr[i] += c;
+	}
+
+	T sum(int x)
+	{
+		T ans{};
+		for(int i = x; i; i -= lowbit(i))
+			ans += tr[i];
+		return ans;
+	}
+
+	T rangeSum(int l, int r)//闭区间[l, r]之和
+	{
+		return sum(r) - sum(l - 1);
+	}
+
+	int select(const T &k)
+	{
+		int x = 0;
+		T cur{};
+		for(int i = 1 << __lg(n); i; i /= 2)
+		{
+			if(x + i <= n && cur + tr[x + i] <= k)
+			{
+				x += i;
+				cur += tr[x];
+			}
+		}
+		return x;
+	}
+
+	void max_update(int x, const T &c)
+	{
+		for(int i = x; i <= n; i += lowbit(i))
+			tr[i] = max(tr[i], c);
+	}
+
+	T max_query(int x)
+	{
+		T ans{};
+		for(int i = x; i; i -= lowbit(i))
+			ans = max(ans, tr[i]);
+		return ans;
+	}
+
+	i64 calc(vector<T> &a)
+	{
+		tr.assign(n + 1, T{});
+		
+		vector<T> b = a;
+		sort(b.begin(), b.end());
+		b.erase(unique(b.begin(), b.end()), b.end());
+
+		auto find = [&](T x) -> int
+		{
+			return lower_bound(b.begin(), b.end(), x) - b.begin();
+		};
+
+		i64 ans = 0;
+		for(int i = 0; i < a.size(); i ++)
+		{
+			int x = find(a[i]) + 1;
+			add(x, 1);
+			ans += i + 1 - sum(x);
+		}
+		return ans;
+	}
+};
+//开的时候不需要再Fenwick<int> bit(n + 1)了
+
 signed main()
 {
 	ios::sync_with_stdio(false);
@@ -55,7 +147,60 @@ signed main()
 	int T; cin >>T;
 	while(T --)
 	{
-		
+		int n, m; cin >>n >>m;
+		vector<int> v(n + 1);
+		for(int i = 1; i <= n; i ++) cin >>v[i];
+
+		vector g(n + 1, vector<int>(m + 1));
+		vector<int> b;
+		for(int i = 1; i <= n; i ++)
+			for(int j = 1; j <= m; j ++)
+			{
+				cin >>g[i][j];
+				b.push_back(g[i][j]);
+			}
+
+		sort(b.begin(), b.end());
+		b.erase(unique(b.begin(), b.end()), b.end());
+
+		auto find = [&](int x) -> int
+		{
+			return lower_bound(b.begin(), b.end(), x) - b.begin() + 1;
+		};
+
+		int siz = b.size();
+		Fenwick<int> cnt(siz);
+		Fenwick<i64> sum(siz);
+
+		int ans = m, c = 0;
+		i64 s = 0;
+		for(int i = n; i >= 1; i --)
+		{
+			for(int j = 1; j <= m; j ++)
+			{
+				int x = find(g[i][j]);
+				cnt.add(x, 1), sum.add(x, g[i][j]);
+
+				c ++;
+				s += g[i][j];
+			}
+			if(s < v[i]) continue;
+
+			i64 lim = s - v[i];
+			int t = sum.select(lim);
+
+			int del = cnt.sum(t);
+			i64 now = sum.sum(t);
+
+			if(t < siz)
+			{
+				i64 x = b[t];
+				int num = cnt.rangeSum(t + 1, t + 1);
+				del += min(1LL * num, (lim - now) / x);
+			}
+			ans = min(ans, c - del);
+		}
+		cout <<ans <<endl;
 	}
 	return 0;
 }

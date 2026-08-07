@@ -44,8 +44,7 @@ void tell(int l, vector<int> &v)
 
 bool cmp(const pii &a, const pii &b)
 {
-	if(a.se != b.se) return a.se < b.se;
-	return a.ff > b.ff;
+	return a.se < b.se;
 }
 
 signed main()
@@ -53,30 +52,38 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int T; cin >>T;
-	while(T --)
+	auto kmp = [&](string &s, string &t, vector<int> &nex)
 	{
-		int n; cin >>n;
-		map<int, int> mp;
-		int ans = 0;
-		for(int i = 1; i <= n; i ++)
+		int n = s.size(), m = t.size();
+		nex.assign(m + 1, 0);
+		s = " " + s, t = " " + t;
+		for(int i = 2, j = 0; i <= m; i ++)
 		{
-			int x; cin >>x;
-			mp[x] ++;
-			ans += x;
+			while(j && t[i] != t[j + 1])
+				j = nex[j];
+			if(t[i] == t[j + 1]) j ++;
+			nex[i] = j;
 		}
 
-		int M = 0, v = 0;
-		for(int i = 1; i <= 1000; i ++)
+		vector<int> pos;
+		for(int i = 1, j = 0; i <= n; i ++)
 		{
-			if(mp[i] > M)
+			while(j && s[i] != t[j + 1])
+				j = nex[j];
+			if(s[i] == t[j + 1]) j ++;
+			if(j == m)
 			{
-				M = mp[i];
-				v = i;
+				pos.push_back(i - m + 1);
+				j = 0;
 			}
 		}
-		int c = n - M;
-		cout <<ans - max(0, M - c - 2) * v <<endl;
-	}
+		return pos;
+	};
+	int n, m; cin >>n >>m;
+	string s, t; cin >>s >>t;
+	vector<int> nex;
+	auto pos = kmp(s, t, nex);
+	//tell(0, pos);
+	cout <<pos.size() <<endl;
 	return 0;
 }
