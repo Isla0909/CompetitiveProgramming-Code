@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"4"
+		],
+		"test": "4 3 64\nFax\nfax\nmax\nmac\n"
+	}
+]
