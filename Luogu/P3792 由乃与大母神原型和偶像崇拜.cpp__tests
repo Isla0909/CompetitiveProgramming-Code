@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"damushen\ndamushen\ndamushen\nyuanxing"
+		],
+		"test": "5 5\n1 2 3 4 5\n2 1 5\n2 2 3\n2 3 3\n1 3 4\n2 3 5\n"
+	}
+]

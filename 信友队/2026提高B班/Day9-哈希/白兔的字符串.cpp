@@ -56,6 +56,8 @@ signed main()
 	string t; cin >>t;
 	int m = t.size();
 
+	//abcdabcd
+
 	string a = " " + t + t;
 	vector<u64> h(2 * m + 1); unordered_set<u64> S;
 	u64 P = rng() | 1;
