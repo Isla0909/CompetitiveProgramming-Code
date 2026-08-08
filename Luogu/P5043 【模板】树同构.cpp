@@ -59,7 +59,6 @@ signed main()
 	{
 		int n; cin >>n;
 		vector<vector<int>> adj(n + 1);
-
 		for(int j = 1; j <= n; j ++)
 		{
 			int fa; cin >>fa;
@@ -79,7 +78,7 @@ signed main()
 				res.push_back(self(v, u));
 			}
 			sort(res.begin(), res.end());
-
+			//( + v1 + v2 + v3 + v4 + .. + )
 			string s = "(";
 			for(auto x : res)
 				s += x;

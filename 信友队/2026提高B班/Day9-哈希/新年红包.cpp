@@ -62,7 +62,7 @@ signed main()
 		cnt[a[i]] ++;
 	}
 	vector<int> res(s + 1); int ans = 1;
-	for(int x = 2; x <= s; x ++)
+	for(int x = 1; x <= s; x ++)
 	{
 		int res = 0;
 		for(int j = 1; j * x <= s; j ++)
@@ -72,3 +72,6 @@ signed main()
 	cout <<ans <<endl;
 	return 0;
 }
+//s + s / 2 + s / 3 + .. + s / s
+//s * (1 + 1/2 + 1/3 + 1/4 + .. + 1/s) = s * (ln s + C)
+//e = 2.71828 > 2 lns < logs
