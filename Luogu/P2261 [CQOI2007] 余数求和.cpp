@@ -52,43 +52,18 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, q; cin >>n >>q;
-	vector<pii> point(n);
-	for(int i = 0; i < n; i ++)
-		cin >>point[i].ff >>point[i].se;
+	i64 n, k; cin >>n >>k;
 
-	sort(point.begin(), point.end());
+	i64 ans = n * k, m = min(n, k);
 
-	auto bad = [&](int a, int b, int c)
+	for(i64 l = 1, r; l <= m; l = r + 1)
 	{
-		auto [xa, ya] = point[a]; auto [xb, yb] = point[b]; auto [xc, yc] = point[c];
-		return 1LL * (yb - ya) * (xc - xb) <= 1LL * (yc - yb) * (xb - xa);
-	};
+		i64 q = k / l;
+		r = min(m, k / q);
 
-	vector<i64> v{0};
-	vector<int> stk{0};
-	for(int i = 1; i < n; i ++)
-	{
-		while(stk.size() >= 2 && bad(stk[stk.size() - 2], stk.back(), i))
-			stk.pop_back();
-
-		int j = stk.back();
-		auto [x1, h1] = point[j]; auto [x2, h2] = point[i];
-		i64 p = 1LL * x2 * h1 - 1LL * x1 * h2;
-		if(p < 0) v.push_back(0);
-		else
-		{
-			i64 q = x2 - x1;
-			v.push_back((q + p - 1) / q);
-		}
-		stk.push_back(i);
+		i64 s = (l + r) * (r - l + 1) / 2;
+		ans -= q * s;
 	}
-
-	sort(v.begin(), v.end());
-	while(q --)
-	{
-		i64 y; cin >>y;
-		cout <<upper_bound(v.begin(), v.end(), y) - v.begin() <<endl;
-	}
+	cout <<ans <<endl;
 	return 0;
 }

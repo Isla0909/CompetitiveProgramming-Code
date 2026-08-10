@@ -1,0 +1,29 @@
+[
+	{
+		"correct_answers":
+		[
+			"0.6666666666"
+		],
+		"test": "10 4\noxooxoxxox\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "5 1\nxxoxx\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0.769230769230769"
+		],
+		"test": "16 10\nxxxoxooooxoxoooo\n"
+	},
+	{
+		"test": "4 3\nooox\n"
+	},
+	{
+		"test": "6 4\noxooxo\n"
+	}
+]

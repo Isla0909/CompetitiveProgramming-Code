@@ -52,43 +52,36 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, q; cin >>n >>q;
-	vector<pii> point(n);
-	for(int i = 0; i < n; i ++)
-		cin >>point[i].ff >>point[i].se;
+	int n, A, R, M; cin >>n >>A >>R >>M;
+	M = min(M, A + R);
 
-	sort(point.begin(), point.end());
+	vector<int> h(n + 1);
+	for(int i = 1; i <= n; i ++) cin >>h[i];
 
-	auto bad = [&](int a, int b, int c)
+	auto f = [&](int x) -> i64
 	{
-		auto [xa, ya] = point[a]; auto [xb, yb] = point[b]; auto [xc, yc] = point[c];
-		return 1LL * (yb - ya) * (xc - xb) <= 1LL * (yc - yb) * (xb - xa);
+		i64 s1 = 0, s2 = 0;
+		for(int i = 1; i <= n; i ++)
+		{
+			if(h[i] < x) s1 += x - h[i];
+			if(h[i] > x) s2 += h[i] - x;
+		}
+		i64 c = min(s1, s2);
+		s1 -= c, s2 -= c;
+		return c * M + A * s1 + R * s2;
 	};
 
-	vector<i64> v{0};
-	vector<int> stk{0};
-	for(int i = 1; i < n; i ++)
+	int l = 0, r = 1e9;
+	while(r - l > 3)
 	{
-		while(stk.size() >= 2 && bad(stk[stk.size() - 2], stk.back(), i))
-			stk.pop_back();
-
-		int j = stk.back();
-		auto [x1, h1] = point[j]; auto [x2, h2] = point[i];
-		i64 p = 1LL * x2 * h1 - 1LL * x1 * h2;
-		if(p < 0) v.push_back(0);
-		else
-		{
-			i64 q = x2 - x1;
-			v.push_back((q + p - 1) / q);
-		}
-		stk.push_back(i);
+		int mid1 = l + (r - l) / 3;
+		int mid2 = r - (r - l) / 3;
+		if(f(mid1) <= f(mid2)) r = mid2;
+		else l = mid1;
 	}
-
-	sort(v.begin(), v.end());
-	while(q --)
-	{
-		i64 y; cin >>y;
-		cout <<upper_bound(v.begin(), v.end(), y) - v.begin() <<endl;
-	}
+	i64 ans = inf;
+	for(int i = l; i <= r; i ++)
+		ans = min(ans, f(i));
+	cout <<ans <<endl;
 	return 0;
 }
