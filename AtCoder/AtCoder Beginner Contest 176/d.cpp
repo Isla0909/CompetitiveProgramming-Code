@@ -52,44 +52,47 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n; cin >>n;
-	vector<int> a(n + 1);
-	for(int i = 1; i <= n; i ++) cin >>a[i];
+	int n, m; cin >>n >>m;
+	int sx, sy, ex, ey; cin >>sx >>sy >>ex >>ey;
+	sx --, sy --, ex --, ey --;
 
-	vector<vector<int>> adj(n + 1);
-	for(int i = 1; i < n; i ++)
+	vector<string> g(n);
+	for(auto &s : g) cin >>s;
+
+	vector dist(n, vector<int>(m, INF));
+	deque<pii> q;
+
+	dist[sx][sy] = 0;
+	q.push_front({sx, sy});
+
+	int dx[] = {1, 0, -1, 0}, dy[] = {0, 1, 0, -1};
+	while(q.size())
 	{
-		int u, v; cin >>u >>v;
-		adj[u].push_back(v);
-		adj[v].push_back(u);
-	}
-
-	vector<array<i64, 4>> f(n + 1);
-	auto dfs = [&](this auto &&self, int u, int fa) -> void
-	{
-		f[u] = {0, a[u], -a[u], 0};
-
-		for(auto v : adj[u])
+		auto [x, y] = q.front(); q.pop_front();
+		for(int i = 0; i < 4; i ++)
 		{
-			if(v == fa) continue;
-
-			self(v, u);
-
-			array<i64, 4> nf = {-inf, -inf, -inf, -inf};
-			for(int p = 0; p < 4; p ++)
+			int nx = x + dx[i], ny = y + dy[i];
+			if(nx >= 0 && nx < n && ny >= 0 && ny < m && g[nx][ny] != '#')
 			{
-				nf[p] = max(nf[p], f[u][p] + f[v][3]);
+				if(dist[x][y] >= dist[nx][ny]) continue;
+				dist[nx][ny] = dist[x][y];
+				q.push_front({nx, ny});
+			}
+		}
 
-				for(int q = 0; q < 4; q ++)
+		for(int dx = -2; dx <= 2; dx ++)
+			for(int dy = -2; dy <= 2; dy ++)
+			{
+				int nx = x + dx, ny = y + dy;
+				if(nx >= 0 && nx < n && ny >= 0 && ny < m && g[nx][ny] != '#')
 				{
-					if(p & q) continue;
-					nf[p | q] = max(nf[p | q], f[u][p] + f[v][q]);
+					if(dist[x][y] + 1 >= dist[nx][ny]) continue;
+					dist[nx][ny] = dist[x][y] + 1;
+					q.push_back({nx, ny});
 				}
 			}
-			f[u].swap(nf);
-		}
-	};
-	dfs(1, -1);
-	cout <<f[1][3] <<endl;
+	}
+	if(dist[ex][ey] == INF) cout <<-1 <<endl;
+	else cout <<dist[ex][ey] <<endl;
 	return 0;
 }

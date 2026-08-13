@@ -115,8 +115,6 @@ signed main()
 			}
 		return ans;
 	};
-
-	i64 ans = solve(0, n - 1);
-	cout <<fixed <<setprecision(4) <<sqrtl(ans) <<endl;	
+	cout <<solve(0, n - 1) <<endl;	
 	return 0;
 }
