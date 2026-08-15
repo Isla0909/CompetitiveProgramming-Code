@@ -1,0 +1,119 @@
+#include <bits/stdc++.h>
+#define endl '\n'
+using namespace std;
+using i64 = long long;
+constexpr long long inf = 1e18;
+
+typedef pair<int, int> pii;
+
+signed main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+	int n, q, s; cin >>n >>q >>s;
+	int tot = n;
+
+	vector<vector<pii>> adj(4 * n + 1);
+	vector<int> down(4 * n + 10), up(4 * n + 10);
+	auto addEdge = [&](int u, int v, int w)
+	{
+		adj[u].emplace_back(v, w);
+	};
+
+	auto build = [&](this auto &&self, int u, int l, int r) -> void
+	{
+		if(l == r)
+		{
+			down[u] = up[u] = l;
+			return ;
+		}
+
+		down[u] = ++ tot, up[u] = ++ tot;
+
+		int mid = l + r >> 1;
+		self(u << 1, l, mid), self(u << 1 | 1, mid + 1, r);
+
+		addEdge(down[u], down[u << 1], 0);
+		addEdge(down[u], down[u << 1 | 1], 0);
+
+		addEdge(up[u << 1], up[u], 0);
+		addEdge(up[u << 1 | 1], up[u], 0);
+	};
+
+	build(1, 1, n);
+
+	auto downadd = [&](this auto &&self, int u, int l, int r, int ql, int qr, int v, int w) -> void
+	{
+		if(l >= ql && r <= qr)
+		{
+			addEdge(v, down[u], w);
+			return ;
+		}
+
+		int mid = l + r >> 1;
+		if(ql <= mid) self(u << 1, l, mid, ql, qr, v, w);
+		if(qr >= mid + 1) self(u << 1 | 1, mid + 1, r, ql, qr, v, w);
+	};
+
+	auto upadd = [&](this auto &&self, int u, int l, int r, int ql, int qr, int v, int w) -> void
+	{
+		if(l >= ql && r <= qr)
+		{
+			addEdge(up[u], v, w);
+			return ;
+		}
+
+		int mid = l + r >> 1;
+		if(ql <= mid) self(u << 1, l, mid, ql, qr, v, w);
+		if(qr >= mid + 1) self(u << 1 | 1, mid + 1, r, ql, qr, v, w);
+	};
+
+	while(q --)
+	{
+		int op; cin >>op;
+		if(op == 1)
+		{
+			int u, v, w; cin >>u >>v >>w;
+			addEdge(u, v, w);
+		}
+		else if(op == 2)
+		{
+			int v, l, r, w; cin >>v >>l >>r >>w;
+			downadd(1, 1, n, l, r, v, w);
+		}
+		else
+		{
+			int v, l, r, w; cin >>v >>l >>r >>w;
+			upadd(1, 1, n, l, r, v, w);
+		}
+	}
+
+	auto dijkstra = [&](int s) -> vector<i64>
+	{
+		vector<i64> dist(tot + 1, inf);
+		vector<bool> st(tot + 1);
+		priority_queue<pair<i64, int>, vector<pair<i64, int>>, greater<>> q;
+		q.emplace(0, s); dist[s] = 0;
+		while(q.size())
+		{
+			auto [d, u] = q.top(); q.pop();
+			if(st[u]) continue;
+			st[u] = 1;
+
+			for(auto [v, w] : adj[u])
+			{
+				if(dist[v] > d + w)
+				{
+					dist[v] = d + w;
+					q.emplace(dist[v], v);
+				}
+			}
+		}
+		return dist;
+	};
+	auto dist = dijkstra(s);
+	for(int i = 1; i <= n; i ++)
+		cout <<(dist[i] == inf ? -1 : dist[i]) <<" \n"[i == n];
+	return 0;
+}
