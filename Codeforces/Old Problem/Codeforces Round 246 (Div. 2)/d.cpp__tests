@@ -1,0 +1,16 @@
+[
+	{
+		"correct_answers":
+		[
+			"3\n1 4\n3 2\n7 1"
+		],
+		"test": "ABACABA\n"
+	},
+	{
+		"correct_answers":
+		[
+			"3\n1 3\n2 2\n3 1"
+		],
+		"test": "AAA\n"
+	}
+]
