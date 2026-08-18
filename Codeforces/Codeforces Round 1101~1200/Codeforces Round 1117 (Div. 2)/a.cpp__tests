@@ -1,0 +1,12 @@
+[
+	{
+		"correct_answers":
+		[
+			"YES\nYES\nYES\nNO"
+		],
+		"test": "4\n6 4\napple\ngrand\nbanana\ngreat\ncherry\ngood\nAG\nBG\nCG\nABC\n1 1\napple\nAA\n1 2\napple\nA\nAA\n2 2\napple\navocado\nB\nBA\n"
+	},
+	{
+		"test": "1\n6 4\napple\ngrand\nbanana\ngreat\ncherry\ngood\nAG\nBG\nCG\nABC\n"
+	}
+]
