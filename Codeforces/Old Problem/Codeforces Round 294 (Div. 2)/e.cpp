@@ -52,10 +52,87 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int T; cin >>T;
-	while(T --)
+	int n; cin >>n;
+	vector<vector<int>> adj(n + 1);
+	for(int i = 1; i < n; i ++)
 	{
-		
+		int u, v; cin >>u >>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+	}
+
+	vector<int> dep(n + 1), siz(n + 1);
+	int len = __lg(n) + 1;
+	vector f(n + 1, vector<int>(len));
+	auto dfs = [&](this auto &&self, int u, int fa) -> void
+	{
+		dep[u] = dep[fa] + 1;
+		siz[u] = 1;
+		f[u][0] = fa;
+
+		for(int j = 1; j < len; j ++)
+			f[u][j] = f[f[u][j - 1]][j - 1];
+
+		for(auto v : adj[u])
+		{
+			if(v == fa) continue;
+
+			self(v, u);
+			siz[u] += siz[v];
+		}
+	};
+	dfs(1, 0);
+
+	auto lca = [&](int a, int b)
+	{
+		if(dep[a] < dep[b]) swap(a, b);
+
+		for(int j = len - 1; j >= 0; j --)
+			if(dep[f[a][j]] >= dep[b])
+				a = f[a][j];
+
+		if(a == b) return a;
+
+		for(int j = len - 1; j >= 0; j --)
+			if(f[a][j] != f[b][j])
+			{
+				a = f[a][j];
+				b = f[b][j];
+			}
+		return f[a][0];
+	};
+
+	auto jump = [&](int u, int k)
+	{
+		for(int j = len - 1; j >= 0; j --)
+			if(k >> j & 1)
+				u = f[u][j];
+		return u;
+	};
+
+	int q; cin >>q;
+	while(q --)
+	{
+		int u, v; cin >>u >>v;
+		int p = lca(u, v);
+		int dis = dep[u] + dep[v] - 2 * dep[p];
+		if(dis & 1) cout <<0 <<endl;
+		else
+		{
+			if(u == v) cout <<n <<endl;
+			else if(dep[u] == dep[v])
+			{
+				int k = dis / 2 - 1;
+				cout <<n - siz[jump(u, k)] - siz[jump(v, k)] <<endl;
+			}
+			else
+			{
+				if(dep[u] < dep[v]) swap(u, v);
+				int k = dis / 2 - 1;
+				p = jump(u, k + 1);
+				cout <<siz[p] - siz[jump(u, k)] <<endl;
+			}
+		}
 	}
 	return 0;
 }

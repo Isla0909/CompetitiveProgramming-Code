@@ -47,9 +47,13 @@ bool cmp(const pii &a, const pii &b)
 	return a.se < b.se;
 }
 
-//肯定是先拿胡萝卜
-//问题在于贪心拿不一定对
-//倒着考虑?
+struct cxy
+{
+	i64 need, gain;
+	int ed;
+	cxy() {}
+	cxy(i64 need, i64 gain, int ed) : need(need), gain(gain), ed(ed) {}
+};
 
 signed main()
 {
@@ -59,7 +63,72 @@ signed main()
 	int T; cin >>T;
 	while(T --)
 	{
-		
+		int n; i64 x; cin >>n >>x;
+		vector<vector<i64>> a(n + 1), b(n + 1);
+		vector<int> siz(n + 1);
+		vector<vector<cxy>> seg(n + 1);
+		for(int i = 1; i <= n; i ++)
+		{
+			cin >>siz[i];
+			a[i].resize(siz[i] + 1), b[i].resize(siz[i] + 1);
+			for(int j = 1; j <= siz[i]; j ++)
+				cin >>a[i][j];
+			for(int j = 1; j <= siz[i]; j ++)
+				cin >>b[i][j];
+
+			i64 sum = 0, need = 0;
+			for(int j = 1; j <= siz[i]; j ++)
+			{
+				need = max(need, a[i][j] - sum);
+				sum += b[i][j] - a[i][j];
+
+				if(sum > 0)
+				{
+					seg[i].emplace_back(need, sum, j);
+					sum = need = 0;
+				}
+			}
+		}
+		vector<int> pos(n + 1), h(n + 1);
+		priority_queue<pair<i64, int>, vector<pair<i64, int>>, greater<>> q;
+		for(int i = 1; i <= n; i ++)
+			if(seg[i].size())
+				q.emplace(seg[i][0].need, i);
+
+		while(q.size())
+		{
+			auto [need, id] = q.top();
+			if(need > x) break;
+
+			q.pop();
+
+			int p = pos[id];
+			x += seg[id][p].gain;
+
+			h[id] = seg[id][p].ed;
+			pos[id] ++;
+
+			if(pos[id] < seg[id].size())
+				q.emplace(seg[id][p + 1].need, id);
+		}
+
+		int ansh = -1, ansid = -1;
+		for(int i = 1; i <= n; i ++)
+		{
+			i64 now = x;
+			int j = h[i] + 1;
+			while(j <= siz[i] && now >= a[i][j])
+			{
+				now += b[i][j] - a[i][j];
+				j ++;
+			}
+			if(j - 1 > ansh)
+			{
+				ansh = j - 1;
+				ansid = i;
+			}
+		}
+		cout <<ansh <<" " <<ansid <<endl;
 	}
 	return 0;
 }

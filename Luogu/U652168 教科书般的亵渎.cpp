@@ -106,6 +106,5 @@ signed main()
 			cout <<pre[m] - pre[c] <<endl;
 		}
 	}
-
 	return 0;
 }
