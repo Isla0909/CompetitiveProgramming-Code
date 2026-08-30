@@ -1,0 +1,9 @@
+[
+	{
+		"correct_answers":
+		[
+			"abc\nzaay\naaa\nxabz\naaba\naa"
+		],
+		"test": "6\ncba\nzayaz\naaaaa\nxazbx\nababa\naa\n"
+	}
+]
