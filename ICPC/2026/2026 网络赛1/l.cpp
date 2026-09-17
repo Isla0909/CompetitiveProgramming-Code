@@ -34,17 +34,45 @@ typedef pair<int, int> pii;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
+constexpr int N = 5e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
 
-void tell(int l, vector<int> &v)
+int tr[N][26];
+int f[N], cnt[N];
+int tot;
+i64 ans;
+
+int newNode()
 {
-	for(int i = l; i < v.size(); i ++)
-		cout <<v[i] <<" \n"[i == v.size() - 1];
+	tot ++;
+	return tot;
 }
 
-bool cmp(const pii &a, const pii &b)
+void initial()
 {
-	return a.se < b.se;
+	tot = 0;
+	newNode();
+}
+
+void add(const string &s)
+{
+	int p = 1, d = 0;
+	for(int i = 0; s[i]; i ++)
+	{
+		int x = s[i] - 'a';
+
+		if(!tr[p][x]) tr[p][x] = newNode();
+		p = tr[p][x];
+
+		d ++;
+		int c = ++ cnt[p];
+
+		if(d > f[c])
+		{
+			ans -= f[c] ^ c;
+			f[c] = d;
+			ans += f[c] ^ c;
+		}
+	}
 }
 
 signed main()
@@ -52,18 +80,15 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	initial();
+
+	int n; cin >>n;
+	for(int i = 1; i <= n; i ++)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		string s; cin >>s;
+		ans += i;
+		add(s);
+		cout <<ans <<endl;
 	}
 	return 0;
 }

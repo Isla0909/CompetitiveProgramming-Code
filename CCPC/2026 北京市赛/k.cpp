@@ -34,17 +34,19 @@ typedef pair<int, int> pii;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
+constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 998244353;
 
-void tell(int l, vector<int> &v)
+i64 qpow(i64 a, i64 b)
 {
-	for(int i = l; i < v.size(); i ++)
-		cout <<v[i] <<" \n"[i == v.size() - 1];
-}
+	i64 res = 1;
+	while(b)
+	{
+		if(b & 1) res = res * a % mod;
 
-bool cmp(const pii &a, const pii &b)
-{
-	return a.se < b.se;
+		a = a * a % mod;
+		b >>= 1;
+	}
+	return res;
 }
 
 signed main()
@@ -52,18 +54,19 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int n; cin >>n;
+	vector<i64> invf(n + 1);
+	invf[0] = 1;
+	for(int i = 1; i <= n; i ++)
+		invf[i] = invf[i - 1] * qpow(i, mod - 2) % mod;
+	
+	vector<i64> dp(n + 1);
+	dp[1] = 1;
+	for(int i = 2; i <= n; i ++)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int k = i + 1 >> 1;
+		dp[i] = (dp[k] + (i - k) * invf[i] % mod) % mod;
 	}
+	cout <<dp[n] <<endl;
 	return 0;
 }

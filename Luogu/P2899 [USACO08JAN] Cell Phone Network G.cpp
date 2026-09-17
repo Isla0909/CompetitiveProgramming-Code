@@ -52,18 +52,35 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int n; cin >>n;
+	vector<vector<int>> adj(n + 1);
+	for(int i = 1; i < n; i ++)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int u, v; cin >>u >>v;
+		adj[u].emplace_back(v);
+		adj[v].emplace_back(u);
 	}
+
+	vector<array<int, 3>> f(n + 1);
+	[&](this auto &&self, int u, int fa) -> void
+	{
+		f[u][0] = 1;
+		f[u][1] = INF, f[u][2] = 0;
+
+		int val = INF;
+		for(auto v : adj[u])
+		{
+			if(v == fa) continue;
+
+			self(v, u);
+
+			f[u][0] += min({f[v][0], f[v][1], f[v][2]});
+			f[u][2] += min(f[v][0], f[v][1]);
+
+			val = min(val, f[v][0] - min(f[v][0], f[v][1]));
+		}
+		if(val != INF) f[u][1] = f[u][2] + val;
+	}(1, -1);
+	cout <<min(f[1][0], f[1][1]) <<endl;
 	return 0;
 }

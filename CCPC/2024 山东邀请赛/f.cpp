@@ -52,18 +52,27 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int T; cin >>T;
+	while(T --)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int n; cin >>n;
+		vector<int> a(n + 1);
+		for(int i = 1; i <= n; i ++) cin >>a[i];
+
+		vector<i64> suf(n + 2), v;
+		for(int i = n; i >= 1; i --)
+		{
+			suf[i] = suf[i + 1] + a[i];
+			if(i != 1) v.push_back(suf[i]);
+		}
+		sort(v.begin(), v.end(), greater<>());
+
+		vector<i64> pre(n + 1);
+		for(int i = 1; i < n; i ++)
+			pre[i] = pre[i - 1] + v[i - 1];
+
+		for(int i = 1; i <= n; i ++)
+			cout <<suf[1] + pre[i - 1] <<" \n"[i == n];
 	}
 	return 0;
 }

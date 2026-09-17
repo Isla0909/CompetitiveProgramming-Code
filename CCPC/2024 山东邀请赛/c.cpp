@@ -34,7 +34,7 @@ typedef pair<int, int> pii;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
+constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 998244353;
 
 void tell(int l, vector<int> &v)
 {
@@ -52,18 +52,32 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int T; cin >>T;
+	while(T --)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int n, k; cin >>n >>k;
+		vector<pii> a(n);
+		for(auto &[x, y] : a) cin >>x >>y;
+
+		sort(a.begin(), a.end());
+
+		i64 ans = 1;
+		priority_queue<int, vector<int>, greater<>> q;
+		for(auto [l, r] : a)
+		{
+			while(q.size() && q.top() < l) q.pop();
+
+			i64 s = q.size();
+			if(s >= k)
+			{
+				ans = 0;
+				break;
+			}
+			ans = ans * (k - s) % mod;
+
+			q.emplace(r);
+		}
+		cout <<ans <<endl;
 	}
 	return 0;
 }

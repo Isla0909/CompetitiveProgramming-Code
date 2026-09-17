@@ -52,18 +52,62 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	vector<int> v;
+	vector<bool> nima(8000000);
+	for(int i = 1; i * i <= 8000000; i ++)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		v.push_back(i * i);
+		nima[i * i] = true;
+	}
+	//tell(0, v);
+
+	vector<int> diff;
+	for(int i = 1; i < v.size(); i ++)
+		diff.push_back(v[i] - v[i - 1]);
+
+	int T; cin >>T;
+	while(T --)
+	{
+		int n; cin >>n;
+		deque<int> q;
+		q.emplace_back(1);
+
+		for(int i = 2; i <= n; i ++)
+		{
+			if(nima[i + q.back()]) q.emplace_front(i);
+			else q.emplace_back(i);
+		}
+		for(auto x : q)
+			cout <<x <<" ";
+		cout <<endl;
+		// vector<int> p, st(n + 1);
+		// for(auto x : diff)
+		// {
+		// 	if(x <= n) 
+		// 	{
+		// 		p.push_back(x);
+		// 		st[x] = 1;
+		// 	}
+		// 	else break;
+		// }
+		// for(int i = 1; i <= n; i ++)
+		// 	if(!st[i]) p.push_back(i);
+
+		// auto check = [&]() -> bool
+		// {
+		// 	for(int i = 1; i < n; i ++)
+		// 	{
+		// 		int x = p[i - 1] + p[i];
+		// 		if(nima[x]) return false;
+		// 	}
+		// 	return true;
+		// };
+
+		// while(!check())
+		// {
+		// 	shuffle(p.begin(), p.end(), rng);
+		// }
+		// tell(0, p);
 	}
 	return 0;
 }

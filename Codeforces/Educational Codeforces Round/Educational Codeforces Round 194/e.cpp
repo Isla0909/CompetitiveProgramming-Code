@@ -52,18 +52,29 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
+	int n, q; cin >>n >>q;
+	string s; cin >>s; 
+	s = " " + s;
+
+	vector<int> pre1(n + 1), pre0(n + 1), pre(n + 1);
+	for(int i = 1; i <= n; i ++)
+	{
+		if(s[i] == '1') pre1[i] = pre1[i - 1] + 1, pre0[i] = pre0[i - 1];
+		if(s[i] == '0') pre0[i] = pre0[i - 1] + 1, pre1[i] = pre1[i - 1];
+
+		if(i + 1 <= n) pre[i] = pre[i - 1] + (s[i] != s[i + 1]);
+	}
+
+
 	while(q --)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
-	}
+		int l, r; cin >>l >>r;
+		int c1 = pre1[r] - pre1[l - 1], c0 = pre0[r] - pre0[l - 1];
+		int c = pre[r - 1] - pre[l - 1] + (s[r] != s[l]);
+		int k = max({(c1 + 1) / 2, (c0 + 1) / 2, c / 2, (r - l + 1 - c / 2 + 2) / 3});
+		//cout <<(c1 + 1) / 2 <<" " <<(c0 + 1) / 2 <<" " <<c / 2 <<" len " <<r - l + 1 <<" " <<(r - l + 1 - c + 2) / 3 <<endl;
+		//cout <<k <<endl;
+		cout <<4 * k - (r - l + 1) <<endl;
+	}	
 	return 0;
 }

@@ -47,23 +47,59 @@ bool cmp(const pii &a, const pii &b)
 	return a.se < b.se;
 }
 
+//0 0 0
+//-1 3 -2
+
+//0 0 0
+//-3 -2 3
+
+//1 3 -2 6
+//6 3 -2 6
+//5 0 0 0
+
 signed main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int T; cin >>T;
+	while(T --)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int n; cin >>n;
+		vector<int> a(n + 1), d1(n + 1), b(n + 1), d2(n + 1);
+		for(int i = 1; i <= n; i ++)
+		{
+			cin >>a[i];
+			d1[i] = a[i] - a[i - 1];
+		}
+		for(int i = 1; i <= n; i ++)
+		{
+			cin >>b[i];
+			d2[i] = b[i] - b[i - 1];
+		}
+		vector<int> diff(n + 1); int ans = 0;
+		for(int i = 1; i <= n; i ++)
+		{
+			diff[i] = d2[i] - d1[i];
+			if(diff[i]) ans ++;
+		}
+		
+		int offset = 20000;
+		bitset<40001> dp;
+		dp[offset] = 1;
+		for(int i = 2; i <= n; i ++)
+		{
+			if(!diff[i]) continue;
+
+			if(diff[i] > 0) dp |= dp << diff[i];
+			else dp |= dp >> (-diff[i]);
+		}
+
+		bool f = false;
+		if(-diff[1] <= offset && -diff[1] >= -offset)
+			f = dp[offset - diff[1]];
+		if(f && diff[1] != 0) ans --;
+		cout <<max(0, ans) <<endl;
 	}
 	return 0;
 }

@@ -52,18 +52,46 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int n, m; cin >>n >>m;
+	vector<i64> a(n);
+	a[0] = 1LL;
+	for(int i = 1; i < n; i ++)
+		a[i] = a[i - 1] * 2LL;
+
+	for(int i = 0; i < m; i ++)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int u, v; cin >>u >>v;
+		u --, v --;
+		a[u] |= 1LL << v;
+		a[v] |= 1LL << u;
 	}
+
+	map<i64, int> f;
+	for(int i = 0; i < (1 << (n / 2)); i ++)
+	{
+		i64 s = 0; int cnt = 0;
+		for(int j = 0; j < n / 2; j ++)
+			if(i >> j & 1)
+			{
+				s ^= a[j];
+				cnt ++;
+			}
+		if(!f.count(s)) f[s] = cnt;
+		else f[s] = min(f[s], cnt);
+	}
+	int ans = INF;
+	for(int i = 0; i < (1 << (n - n / 2)); i ++)
+	{
+		i64 s = 0; int cnt = 0;
+		for(int j = 0; j < (n - n / 2); j ++)
+			if(i >> j & 1)
+			{
+				s ^= a[j + n / 2];
+				cnt ++;
+			}
+		if(f.count(((1LL << n) - 1) ^ s)) 
+			ans = min(ans, cnt + f[((1LL << n) - 1) ^ s]);
+	}
+	cout <<ans <<endl;
 	return 0;
 }

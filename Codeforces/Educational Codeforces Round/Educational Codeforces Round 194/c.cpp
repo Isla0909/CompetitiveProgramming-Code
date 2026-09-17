@@ -46,24 +46,26 @@ bool cmp(const pii &a, const pii &b)
 {
 	return a.se < b.se;
 }
-
+//a + b = a ^ b + 2 * (a & b)
+//a ^ b = s - 2 * (a & b);
 signed main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int T; cin >>T;
+	while(T --)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int x, y; cin >>x >>y;
+		int s = x + y;
+		int nx = 0;
+		for(int i = 29; i >= 0; i --)
+		{
+			int d1 = (s >> i & 1);
+			if(d1 && nx + (1 << i) <= x)
+				nx += 1 << i;
+		}
+		cout <<s <<" " <<x - nx <<endl;
 	}
 	return 0;
 }

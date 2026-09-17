@@ -52,18 +52,55 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int T; cin >>T;
+	while(T --)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int n; cin >>n;
+		string s; cin >>s;
+		s = " " + s;
+
+		if(s[1] == '0')
+		{
+			cout <<-1 <<endl;
+			continue;
+		}
+		vector<array<i64, 61>> f(n + 1);
+		for(int i = 1; i <= n; i ++)
+			f[i].fill(inf);
+
+		if(s[1] == '+')
+		{
+			for(int i = 31; i <= 60; i ++)
+				f[1][i] = i - 30;
+		}
+		else
+		{
+			for(int i = 0; i < 30; i ++)
+				f[1][i] = abs(i - 30);
+		}
+
+		for(int i = 2; i <= n; i ++)
+			for(int j = 0; j <= 60; j ++)
+			{
+				if(f[i - 1][j] == inf) continue;
+
+				for(int ai = -5; ai <= 5; ai ++)
+				{
+					if(j + ai < 0 || j + ai > 60) continue;
+					if(!ai) continue;
+
+					if(s[i] == '+' && j + ai <= 30) continue;
+					if(s[i] == '0' && j + ai != 30) continue;
+					if(s[i] == '-' && j + ai >= 30) continue;
+
+					f[i][j + ai] = min(f[i][j + ai], max(f[i - 1][j], (i64)abs(ai)));
+				}
+			}
+		i64 ans = inf;
+		for(int j = 0; j <= 60; j ++)
+			ans = min(ans, f[n][j]);
+		if(ans == inf) ans = -1;
+		cout <<ans <<endl;
 	}
 	return 0;
 }

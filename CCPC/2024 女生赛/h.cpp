@@ -52,18 +52,23 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	string s; cin >>s;
+	f64 ans = 0; int cnt = 0;
+	for(int i = 0; i < s.size(); i ++)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		if(s[i] == '0') continue;
+
+		int j = i, len = 1;
+		while(j + 1 < s.size() && s[j + 1] == '1')
+		{
+			j ++;
+			len ++;
+		}
+		if(len & 1) ans += (len + 1) / 2;
+		else ans += (len - 2) / 2, cnt ++;
+
+		i = j;
 	}
+	cout <<fixed <<setprecision(10) <<(ans + sqrtl(2.l) * cnt) <<endl;
 	return 0;
 }

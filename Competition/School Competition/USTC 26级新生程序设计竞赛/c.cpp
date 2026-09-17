@@ -52,18 +52,26 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int zl, d, x1, x2, y1, y2; cin >>zl >>d >>x1 >>y1 >>x2 >>y2;
-	int zr = zl + d;
-	int xl = min(x1, x2), xr = max(x1, x2);
-	int yl = min(y1, y2), yr = max(y1, y2);
-	int q; cin >>q;
-	while(q --)
+	int T; cin >>T;
+	while(T --)
 	{
-		int x, y, z; cin >>x >>y >>z;
-		if(x >= xl && x <= xr && y >= yl && y <= yr && z >= zl && z <= zr)
-			cout <<"YES" <<endl;
-		else 
-			cout <<"NO" <<endl;
+		int n; cin >>n;
+		vector<int> a(n + 1);
+		for(int i = 1; i <= n; i ++) cin >>a[i];
+
+		i64 sum = accumulate(a.begin() +1, a.end(), 0LL);
+
+		if(n == 1) cout <<0 <<endl;
+		else if(n == 2)
+		{
+			int d = ((a[1] - a[2]) % 4 + 4) % 4;
+			cout <<min(d, 4 - d) <<endl;
+		}
+		else
+		{
+			if(n & 1) cout <<0 <<endl;
+			else cout <<(sum & 1) <<endl;
+		}
 	}
 	return 0;
 }
