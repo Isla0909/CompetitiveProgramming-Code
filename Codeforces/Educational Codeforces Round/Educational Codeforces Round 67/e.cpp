@@ -36,7 +36,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 constexpr int N = 2e5 + 10, INF = 0x3f3f3f3f, mod = 1e9 + 7;
 
-void tell(int l, vector<i64> &v)
+void tell(int l, vector<int> &v)
 {
 	for(int i = l; i < v.size(); i ++)
 		cout <<v[i] <<" \n"[i == v.size() - 1];
@@ -52,52 +52,41 @@ signed main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int m, s, t; cin >>m >>s >>t;
-	int p = m / 10, q = m % 10;
-	if(t <= p)
+	int n; cin >>n;
+	vector<vector<int>> adj(n + 1);
+	for(int i = 1; i < n; i ++)
 	{
-		if(t * 60 >= s) cout <<"Yes" <<endl <<(s + 59) / 60 <<endl;
-		else cout <<"No" <<endl <<60 * t <<endl;
+		int u, v; cin >>u >>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
 	}
-	else
-	{	
-		if(60 * p >= s)
-	    {
-	        cout <<"Yes" <<endl;
-	        cout <<(s + 59) / 60 <<endl;
-	        return 0;
-	    }
-		
-		t -= p; m = q;
-		vector<i64> dp(61, -inf);
-		dp[q] = 60 * p; bool f = 0;
-		for(int i = 1; i <= t; i ++)
-		{
-			vector<i64> ndp(61, -inf);
-			for(int j = 0; j <= 60; j ++)
-			{
-				if(dp[j] == -inf) continue;
 
-				ndp[j] = max(ndp[j], dp[j] + 17);
-				if(j >= 10) ndp[j - 10] = max(ndp[j - 10], dp[j] + 60);
-				if(j + 4 <= 60) ndp[j + 4] = max(ndp[j + 4], dp[j]);
-			}
-			dp = ndp;
-			for(int j = 0; j <= 60; j ++)
-				if(dp[j] >= s)
-				{
-					cout <<"Yes" <<endl;
-					cout <<i + p <<endl;
-					f = 1;
-					break;
-				}
-			if(f) break;
-		}
-		if(!f) 
+	vector<int> siz(n + 1, 1);
+	[&](this auto &&self, int u, int fa) -> void
+	{
+		for(auto v : adj[u])
 		{
-			cout <<"No" <<endl;
-			cout <<*max_element(dp.begin(), dp.end()) <<endl;
+			if(v == fa) continue;
+
+			self(v, u);
+			siz[u] += siz[v];
 		}
-	}
+	}(1, -1);
+
+	vector<i64> f(n + 1);
+	f[1] = accumulate(siz.begin() + 1, siz.end(), 0LL);
+
+	[&](this auto &&self, int u, int fa) -> void
+	{
+		for(auto v : adj[u])
+		{
+			if(v == fa) continue;
+
+			f[v] = f[u] + n - 2 * siz[v];
+			self(v, u);
+		}
+	}(1, -1);
+
+	cout <<*max_element(f.begin() + 1, f.end()) <<endl;
 	return 0;
 }

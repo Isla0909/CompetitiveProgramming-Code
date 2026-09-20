@@ -12,5 +12,19 @@
 			"Yes\n6"
 		],
 		"test": "36 255 10\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes\n1"
+		],
+		"test": "10 60 2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"Yes\n1"
+		],
+		"test": "30 60 5\n"
 	}
 ]
