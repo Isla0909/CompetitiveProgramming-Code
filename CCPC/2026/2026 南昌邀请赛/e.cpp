@@ -21,34 +21,44 @@ signed main()
     cin.tie(nullptr);
 
     int n; cin >>n;
-    
-    auto check = [&](int x) -> i64
+    vector<array<int, 2>> g;
+    for(int i = 1; i <= n; i ++)
+        g.push_back({i, i});
+
+    i64 res = 0;
+    while(g.size() != 1)
     {
-        vector<int> v(x);
-        iota(v.begin(), v.end(), 1);
+        vector<int> v;
+        for(int i = 0; i < g.size(); i += 2)
+            for(int j = g[i][0]; j <= g[i][1]; j ++)
+                v.push_back(j);
 
         i64 val = query(v);
-        return val;
-    };
-    
-    int l = 0, r = n + 1;
-    vector<i64> res;
-    while(l + 1 != r)
-    {
-        int mid = l + r >> 1;
-        i64 val = check(mid);
-        res.push_back(val);
-        if(val == 0) l = mid;
-        else r = mid;
-    }
+        vector<array<int, 2>> ng;
 
-    while(!res.back()) res.pop_back();
+        if(val > 0)
+        {
+            res = val;
+            for(int i = 0; i < g.size(); i += 2)
+                ng.push_back(g[i]);
+        }
+        else if(res > 0)
+        {
+            for(int i = 1; i < g.size(); i += 2)
+                ng.push_back(g[i]);
+        }
+        else
+        {
+            for(int i = 0; i < g.size(); i += 2)
+            {
+                int r = g[i][1];
+                if(i + 1 < g.size()) r = g[i + 1][1];
 
-    if(r == n + 1)
-    {
-        assert(res.empty());
-        cout <<"! " <<1 <<endl;
+                ng.push_back({g[i][0], r});
+            }
+        }
+        swap(g, ng);
     }
-    else cout <<"! " <<res.back() + 1 <<endl;
+    cout <<"! " <<res + 1 <<endl;
     return 0;
 }
